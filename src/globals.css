@@ -12,40 +12,57 @@ body {
   @apply font-roboto;
 }
 
+/* https://m3.material.io/theme-builder#/custom */
 :root {
   /* Light theme */
-  --primary: #38b2ac; /* teal-500 */
-  --primary-variant: #2c7a7b; /* teal-700 */
-  --secondary: #d69e2e; /* yellow-500 */
-  --secondary-variant: #b7791f; /* yellow-700 */
-  --tertiary: #718096; /* blue-gray-500 */
-  --tertiary-variant: #2d3748; /* blue-gray-700 */
-  --background: #ffffff; /* white */
-  --surface: #edf2f7; /* gray-200 */
-  --error: #e53e3e; /* red-500 */
-  --on-primary: #ffffff; /* white */
-  --on-secondary: #000000; /* black */
-  --on-tertiary: #ffffff; /* white */
-  --on-background: #000000; /* black */
-  --on-surface: #000000; /* black */
-  --on-error: #ffffff; /* white */
+  --primary: #006a66;
+  --on-primary: #ffffff;
+  --primary-container: #70f7f0;
+  --on-primary-container: #00201e;
+  --secondary: #4a6361;
+  --on-secondary: #ffffff;
+  --secondary-container: #cce8e5;
+  --on-secondary-container: #051f1e;
+  --tertiary: #49607b;
+  --on-tertiary: #ffffff;
+  --tertiary-container: #d0e4ff;
+  --on-tertiary-container: #011d34;
+  --error: #ba1a1a;
+  --on-error: #ffffff;
+  --error-container: #ffdad6;
+  --on-error-container: #410002;
+  --background: #fafdfb;
+  --on-background: #191c1c;
+  --outline: #6f7978;
+  --surface: #fafdfb;
+  --on-surface: #191c1c;
+  --surface-variant: #dae5e3;
+  --on-surface-variant: #3f4948;
 
   /* Dark theme */
-  --dark-primary: #38b2ac; /* teal-500 */
-  --dark-primary-variant: #4fd1c5; /* teal-300 */
-  --dark-secondary: #d69e2e; /* yellow-500 */
-  --dark-secondary-variant: #ecc94b; /* yellow-300 */
-  --dark-tertiary: #718096; /* blue-gray-500 */
-  --dark-tertiary-variant: #2d3748; /* blue-gray-700 */
-  --dark-background: #1a202c; /* gray-900 */
-  --dark-surface: #2d3748; /* gray-800 */
-  --dark-error: #e53e3e; /* red-500 */
-  --dark-on-primary: #000000; /* black */
-  --dark-on-secondary: #1a202c; /* gray-900 */
-  --dark-on-tertiary: #ffffff; /* white */
-  --dark-on-background: #ffffff; /* white */
-  --dark-on-surface: #ffffff; /* white */
-  --dark-on-error: #ffffff; /* white */
+  --dark-primary: #4edad3;
+  --dark-on-primary: #003735;
+  --dark-primary-container: #00504d;
+  --dark-on-primary-container: #70f7f0;
+  --dark-secondary: #b0ccc9;
+  --dark-on-secondary: #1b3533;
+  --dark-secondary-container: #324b49;
+  --dark-on-secondary-container: #cce8e5;
+  --dark-tertiary: #b0c9e7;
+  --dark-on-tertiary: #19324a;
+  --dark-tertiary-container: #314962;
+  --dark-on-tertiary-container: #d0e4ff;
+  --dark-error: #ffb4ab;
+  --dark-on-error: #690005;
+  --dark-error-container: #93000a;
+  --dark-on-error-container: #ffdad6;
+  --dark-background: #191c1c;
+  --dark-on-background: #e0e3e2;
+  --dark-outline: #889391;
+  --dark-surface: #191c1c;
+  --dark-on-surface: #e0e3e2;
+  --dark-surface-variant: #3f4948;
+  --dark-on-surface-variant: #bec9c7;
 }
 
 html, body, #root {

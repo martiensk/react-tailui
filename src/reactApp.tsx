@@ -8,7 +8,12 @@ import * as lib from '@/index';
  */
 const App = () => (
   <lib.RApp>
-    <lib.RButton size="small" className='m-4' block>Button!</lib.RButton>
+    <lib.RButton size="small" className='m-4'>Button!</lib.RButton>
+    <lib.RButton size="small" className='m-4' variant='plain'>Button!</lib.RButton><br />
+    <lib.RButton size="small" className='m-4' color="secondary">Button!</lib.RButton>
+    <lib.RButton size="small" className='m-4' variant='plain' color="secondary">Button!</lib.RButton><br />
+    <lib.RButton size="small" className='m-4' color="tertiary">Button!</lib.RButton>
+    <lib.RButton size="small" className='m-4' variant='plain' color="tertiary">Button!</lib.RButton><br />
       Test2
   </lib.RApp>
 );
