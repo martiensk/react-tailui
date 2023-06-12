@@ -1,10 +1,10 @@
 import { ReactNode, FC, useContext } from 'react';
 import ThemeContext from '@/contexts/ThemeContext';
 
-interface Props {
+export interface Props {
     children: ReactNode,
     className?: string,
-    variant?: 'default' | 'tonal' | 'flat' | 'outlined' | 'text' | 'plain',
+    variant?: 'default' | 'tonal' | 'outlined' | 'text' | 'plain',
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large',
     flat?: boolean,
     block?: boolean,

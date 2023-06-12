@@ -1,5 +1,5 @@
 // Components
-import './globals.css';
+import './global.css';
 // Buttons
 export { default as RButton } from './components/buttons/RButton';
 // Layout
