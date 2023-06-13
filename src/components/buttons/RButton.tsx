@@ -8,7 +8,8 @@ export interface Props {
     size?: 'extra-small' | 'small' | 'medium' | 'large' | 'extra-large',
     flat?: boolean,
     block?: boolean,
-    color?: 'primary' | 'secondary' | 'tertiary' | 'error'
+    color?: 'default' | 'primary' | 'secondary' | 'tertiary' | 'error',
+    rounded?: 'none' | 'default' | 'md' | 'lg' | 'full'
 }
 
 /**
@@ -16,7 +17,7 @@ export interface Props {
  * @param {ReactNode} children The component children
  * @returns {FC} A button component.
  */
-const RButton: FC<Props> = ({ children, variant='default', size='medium', className='', flat=false, block=false, color='' }) => {
+const RButton: FC<Props> = ({ children, variant='default', size='medium', className='', flat=false, block=false, color='default', rounded='default' }) => {
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   /**
@@ -168,8 +169,27 @@ const RButton: FC<Props> = ({ children, variant='default', size='medium', classN
     return `${baseClasses} before:bg-white`;
   };
 
-  return (<button className={`select-none inline-block relative font-bold outline-none uppercase ${getShadow()} ${getSize()} ${getHover()} ${getVariant()} ${getBlock()} ${className}`} onClick={() => toggleTheme && toggleTheme()}>
-    {theme}
+  /**
+   * Gets the button border-radius classes based on the rounded prop
+   * @author Martiens Kropff
+   * @returns {string} The hover classes
+   */
+  const getRounded = () => {
+    switch(rounded) {
+    case 'none':
+      return 'rounded-0';
+    case 'md':
+      return 'rounded-md';
+    case 'lg':
+      return 'rounded-lg';
+    case 'full':
+      return 'rounded-full';
+    default:
+      return 'rounded';
+    }
+  };
+
+  return (<button className={`select-none inline-block relative font-bold outline-none uppercase ${getShadow()} ${getSize()} ${getHover()} ${getVariant()} ${getBlock()} ${getRounded()} ${className}`} onClick={() => toggleTheme && toggleTheme()}>
     {children}
   </button>);
 };

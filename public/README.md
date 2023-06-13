@@ -1,0 +1,1 @@
+This is required for the Storybook build, simply because I haven't figured out how to pass the `publicDir: false` option to the vite build.

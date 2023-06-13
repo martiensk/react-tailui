@@ -9,8 +9,7 @@ const config = {
     "@storybook/addon-styling",
   ],
   framework: {
-    name: "@storybook/react-vite",
-    options: {},
+    name: "@storybook/react-vite"
   },
   docs: {
     autodocs: "tag",
