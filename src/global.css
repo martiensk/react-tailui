@@ -40,18 +40,18 @@ body {
   --on-surface-variant: #3f4948;
 
   /* Dark theme */
-  --dark-primary: #4edad3;
-  --dark-on-primary: #003735;
-  --dark-primary-container: #00504d;
-  --dark-on-primary-container: #70f7f0;
-  --dark-secondary: #b0ccc9;
-  --dark-on-secondary: #1b3533;
-  --dark-secondary-container: #324b49;
-  --dark-on-secondary-container: #cce8e5;
-  --dark-tertiary: #b0c9e7;
-  --dark-on-tertiary: #19324a;
-  --dark-tertiary-container: #314962;
-  --dark-on-tertiary-container: #d0e4ff;
+  --dark-primary: #00504d;
+  --dark-on-primary: #70f7f0;
+  --dark-primary-container: #4edad3;
+  --dark-on-primary-container: #003735;
+  --dark-secondary: #324b49;
+  --dark-on-secondary: #cce8e5;
+  --dark-secondary-container: #b0ccc9;
+  --dark-on-secondary-container: #1b3533;
+  --dark-tertiary: #314962;
+  --dark-on-tertiary: #d0e4ff;
+  --dark-tertiary-container: #b0c9e7;
+  --dark-on-tertiary-container: #19324a;
   --dark-error: #ffb4ab;
   --dark-on-error: #690005;
   --dark-error-container: #93000a;

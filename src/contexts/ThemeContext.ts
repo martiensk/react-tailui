@@ -1,9 +1,9 @@
-import { createContext } from 'react';
+import { MouseEventHandler, createContext } from 'react';
 
-interface IThemeContext {
+export interface IThemeContext {
     theme: string | null;
     setTheme: React.Dispatch<React.SetStateAction<string>> | null;
-    toggleTheme: (() => void) | null;
+    toggleTheme: MouseEventHandler<HTMLButtonElement> | null;
 }
 
 const ThemeContext = createContext<IThemeContext>({

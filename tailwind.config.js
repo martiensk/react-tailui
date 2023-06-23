@@ -73,6 +73,21 @@ export default {
       },
       brightness: {
         115: '1.15',
+      },
+      animation: {
+        ripple: 'ripple 0.4s linear',
+      },
+      keyframes: {
+        ripple: {
+          '0%': {
+            transform: 'scale(0)',
+            opacity: '1',
+          },
+          '100%': {
+            transform: 'scale(2.5)',
+            opacity: '0',
+          },
+        }
       }
     },
   },

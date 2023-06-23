@@ -1,4 +1,4 @@
-import { ReactNode, FC, useContext } from 'react';
+import { ReactNode, FC, useContext, useRef } from 'react';
 import ThemeContext from '@/contexts/ThemeContext';
 
 export interface Props {
@@ -9,7 +9,8 @@ export interface Props {
     flat?: boolean,
     block?: boolean,
     color?: 'default' | 'primary' | 'secondary' | 'tertiary' | 'error',
-    rounded?: 'none' | 'default' | 'md' | 'lg' | 'full'
+    rounded?: 'none' | 'default' | 'md' | 'lg' | 'full',
+    ripple?: boolean
 }
 
 /**
@@ -17,8 +18,9 @@ export interface Props {
  * @param {ReactNode} children The component children
  * @returns {FC} A button component.
  */
-const RButton: FC<Props> = ({ children, variant='default', size='medium', className='', flat=false, block=false, color='default', rounded='default' }) => {
-  const { theme, toggleTheme } = useContext(ThemeContext);
+const RButton: FC<Props> = ({ children, variant='default', size='medium', className='', flat=false, block=false, color='default', rounded='default', ripple=true }) => {
+  const { theme } = useContext(ThemeContext);
+  const buttonRef = useRef<HTMLButtonElement>(null);
 
   /**
    * Gets the button size classes
@@ -31,12 +33,11 @@ const RButton: FC<Props> = ({ children, variant='default', size='medium', classN
       return 'px-2 py-1 text-xs';
     case 'small':
       return 'px-3 py-2 text-sm';
-    case 'medium':
-      return 'px-4 py-2 text-base';
     case 'large':
       return 'px-5 py-3 text-lg';
     case 'extra-large':
       return 'px-6 py-4 text-xl';
+    case 'medium':
     default:
       return 'px-4 py-2 text-base';
     }
@@ -158,11 +159,15 @@ const RButton: FC<Props> = ({ children, variant='default', size='medium', classN
    * @returns {string} The hover classes
    */
   const getHover = () => {
+    // Only for plain variant
     if(variant === 'plain') {
       if(theme === 'light') return 'hover:brightness-75';
       return 'hover:brightness-115';
     }
-    const baseClasses = 'before:content=[\'\'] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:transition-opacity hover:before:opacity-15';
+
+    // For all other variants
+    const baseClasses = 'before:content=[\'\'] before:absolute before:top-0 before:left-0 before:w-full before:h-full before:opacity-0 before:transition-opacity hover:before:opacity-15 overflow-hidden';
+
     if(theme === 'light') 
       return `${baseClasses} before:bg-black`;
     
@@ -177,19 +182,51 @@ const RButton: FC<Props> = ({ children, variant='default', size='medium', classN
   const getRounded = () => {
     switch(rounded) {
     case 'none':
-      return 'rounded-0';
+      return 'rounded-0 before:rounded-0';
     case 'md':
-      return 'rounded-md';
+      return 'rounded-md before:rounded-md';
     case 'lg':
-      return 'rounded-lg';
+      return 'rounded-lg before:rounded-lg';
     case 'full':
-      return 'rounded-full';
+      return 'rounded-full before:rounded-full';
     default:
-      return 'rounded';
+      return 'rounded before:rounded-md';
     }
   };
 
-  return (<button className={`select-none inline-block relative font-bold outline-none uppercase ${getShadow()} ${getSize()} ${getHover()} ${getVariant()} ${getBlock()} ${getRounded()} ${className}`} onClick={() => toggleTheme && toggleTheme()}>
+  const rippleStyles = ['absolute',  'bg-white',  'opacity-0',   'pointer-events-none', 'animate-ripple', 'rounded-full'];
+
+  /**
+   * Created a material design ripple effect on the button when clicked.
+   * @param {React.MouseEvent<HTMLButtonElement>} e Button click event.
+   * @author Martiens Kropff
+   * @returns {void}
+   */
+  const doRipple = (e: React.MouseEvent<HTMLButtonElement>) => {
+    if(!ripple || buttonRef.current === null) return;
+    
+    const button = buttonRef.current;
+
+    const circle = document.createElement('span');
+    rippleStyles.forEach((r) => circle.classList.add(r));
+    const diameter = Math.max(button.clientWidth, button.clientHeight);
+    const radius = diameter / 2;
+
+    circle.style.width = circle.style.height = `${diameter}px`;
+    circle.style.left = `${e.clientX - button.offsetLeft - radius}px`;
+    circle.style.top = `${e.clientY - button.offsetTop - radius}px`;
+    circle.classList.add('ripple');
+
+    const rippleEl = button.getElementsByClassName('ripple')[0];
+
+    if (rippleEl) 
+      rippleEl.remove();
+  
+
+    button.appendChild(circle);
+  };
+
+  return (<button className={`select-none inline-block relative font-bold outline-none uppercase ${getShadow()} ${getSize()} ${getHover()} ${getVariant()} ${getBlock()} ${getRounded()} ${className}`} onClick={doRipple} ref={buttonRef}>
     {children}
   </button>);
 };
