@@ -18,5 +18,5 @@ export default defineConfig({
       name: 'react-tailui',
       fileName: 'react-tailui',
     },
-  },
+  }
 });

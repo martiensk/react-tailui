@@ -1,5 +1,19 @@
 {
   "name": "react-tailui",
+
+  "description": "A ready-to-go tailwind based component library for React",
+  "author": "Martiens Kropff",
+  "license": "MIT",
+  "homepage": "<YOUR_SITE_URL>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/martiensk/react-tailui.git"
+  },
+  "bugs": {
+    "url": "https://github.com/martiensk/react-tailui/issues"
+  },
+  "keywords": ["some", "keywords", "to", "describe", "the", "package"],
+
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -12,6 +26,9 @@
       "require": "./dist/react-tailui.umd.cjs"
     }
   },
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
